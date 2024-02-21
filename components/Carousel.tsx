@@ -20,27 +20,72 @@ const Carousel = () => {
 
   const handleImageChange = (image: string) => {
     const index = images.indexOf(image);
-    setCurrentIndex(index);
-    setCurrentImage(image);
+    const mainImage = document.getElementById("main-image");
+
+    if (mainImage) {
+      const direction = index > currentIndex ? -1 : 1;
+
+      mainImage.style.transition = "transform 0.4s ease";
+      mainImage.style.transform = `translateX(${direction * 100}%)`;
+
+      setTimeout(() => {
+        mainImage.style.transition = "none";
+        mainImage.style.transform = `translateX(${direction * -100}%)`;
+      }, 400);
+
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setCurrentImage(image);
+
+        mainImage.style.transition = "transform 0.4s ease";
+        mainImage.style.transform = "translateX(0%)";
+      }, 500);
+    }
   };
 
   const handleNextImage = () => {
-    if (currentIndex === images.length - 1) {
-      setCurrentIndex(0);
-      setCurrentImage(images[0]);
-    } else {
-      setCurrentIndex(currentIndex + 1);
-      setCurrentImage(images[currentIndex + 1]);
+    const mainImage = document.getElementById("main-image");
+    if (mainImage) {
+      mainImage.style.transition = "transform 0.4s ease";
+      mainImage.style.transform = "translateX(-100%)";
+
+      setTimeout(() => {
+        mainImage.style.transition = "none";
+        mainImage.style.transform = "translateX(100%)";
+      }, 400);
+
+      setTimeout(() => {
+        const nextIndex = (currentIndex + 1) % images.length;
+        setCurrentIndex(nextIndex);
+        setCurrentImage(images[nextIndex]);
+
+        mainImage.style.transition = "transform 0.4s ease";
+        mainImage.style.transform = "translateX(0%)";
+      }, 500);
     }
   };
 
   const handlePreviousImage = () => {
-    if (currentIndex === 0) {
-      setCurrentIndex(images.length - 1);
-      setCurrentImage(images[images.length - 1]);
-    } else {
-      setCurrentIndex(currentIndex - 1);
-      setCurrentImage(images[currentIndex - 1]);
+    const mainImage = document.getElementById("main-image");
+
+    if (mainImage) {
+      mainImage.style.transition = "transform 0.4s ease";
+      mainImage.style.transform = "translateX(100%)";
+
+      setTimeout(() => {
+        mainImage.style.transition = "none";
+        mainImage.style.transform = "translateX(-100%)";
+      }, 400);
+
+      setTimeout(() => {
+        const previousIndex =
+          currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+        setCurrentIndex(previousIndex);
+        setCurrentImage(images[previousIndex]);
+
+        mainImage.style.transition = "transform 0.4s ease";
+        mainImage.style.transform = "translateX(0%)";
+      }, 500);
     }
   };
 
@@ -67,13 +112,16 @@ const Carousel = () => {
             onClick={handleNextImage}
           />
         </div>
-        <Image
-          priority
-          src={`/meryl-images/${currentImage}`}
-          alt="Meryl Lounge Chair"
-          width={844}
-          height={461}
-        />
+        <div className="relative h-[469.5px] w-[844px] overflow-hidden">
+          <Image
+            priority
+            src={`/meryl-images/${currentImage}`}
+            alt="Meryl Lounge Chair"
+            id="main-image"
+            width={844}
+            height={461}
+          />
+        </div>
       </div>
 
       <div className="flex gap-6">
