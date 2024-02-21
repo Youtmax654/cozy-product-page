@@ -2,23 +2,24 @@
 
 import { useState } from "react";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+
 import chevronLeft from "../public/icons/chevron-left.svg";
 import chevronRight from "../public/icons/chevron-right.svg";
 
+import meryl1 from "../public/meryl-images/meryl-1.png";
+import meryl2 from "../public/meryl-images/meryl-2.png";
+import meryl3 from "../public/meryl-images/meryl-3.png";
+import meryl4 from "../public/meryl-images/meryl-4.png";
+import meryl5 from "../public/meryl-images/meryl-5.png";
+
 const Carousel = () => {
-  const [currentImage, setCurrentImage] = useState("meryl-1.png");
+  const [currentImage, setCurrentImage] = useState(meryl1);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = [
-    "meryl-1.png",
-    "meryl-2.png",
-    "meryl-3.png",
-    "meryl-4.png",
-    "meryl-5.png",
-  ];
+  const images = [meryl1, meryl2, meryl3, meryl4, meryl5];
 
-  const handleImageChange = (image: string) => {
+  const handleImageChange = (image: StaticImageData) => {
     const index = images.indexOf(image);
     const mainImage = document.getElementById("main-image");
 
@@ -115,7 +116,7 @@ const Carousel = () => {
         <div className="relative h-[469.5px] w-[844px] overflow-hidden">
           <Image
             priority
-            src={`/meryl-images/${currentImage}`}
+            src={currentImage}
             alt="Meryl Lounge Chair"
             id="main-image"
             width={844}
@@ -127,10 +128,10 @@ const Carousel = () => {
       <div className="flex gap-6">
         {images.map((image) => (
           <div
-            key={image}
+            key={image.src}
             className={`size-[104px] cursor-pointer rounded-md border-2 border-solid p-2 ${currentImage === image ? "border-verdigris" : "border-french-grey"}`}
             style={{
-              background: `url(/meryl-images/${image})`,
+              background: `url(${image.src})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
