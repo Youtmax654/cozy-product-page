@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import Heart from "../public/icons/Heart";
-import Button from "./Button";
 
 import { motion } from "framer-motion";
 
@@ -21,7 +20,7 @@ const WishlistBtn = () => {
       onClick={handleFilling}
     >
       <Heart fill={fill} />
-      <Button value="Add to wishlist" type="link" enabled={true} />
+      <p className="label-medium select-none text-verdigris">Add to wishlist</p>
     </motion.div>
   );
 };

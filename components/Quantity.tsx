@@ -28,7 +28,7 @@ const Quantity = () => {
   };
 
   return (
-    <div className="relative flex h-[52px] w-40 items-center justify-center rounded-[4px] border border-cool-grey">
+    <div className="relative flex h-[52px] w-40 select-none items-center justify-center rounded-[4px] border border-cool-grey">
       <Image
         src={minus}
         alt="Minus button"
