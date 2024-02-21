@@ -5,6 +5,8 @@ import { useState } from "react";
 import Heart from "../public/icons/Heart";
 import Button from "./Button";
 
+import { motion } from "framer-motion";
+
 const WishlistBtn = () => {
   const [fill, setFill] = useState<string>("none");
 
@@ -13,13 +15,14 @@ const WishlistBtn = () => {
   };
 
   return (
-    <div
+    <motion.div
+      whileTap={{ scale: 1.2, transition: { duration: 0.5 } }}
       className="flex cursor-pointer items-center gap-4"
       onClick={handleFilling}
     >
       <Heart fill={fill} />
       <Button value="Add to wishlist" type="link" enabled={true} />
-    </div>
+    </motion.div>
   );
 };
 

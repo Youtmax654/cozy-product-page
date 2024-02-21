@@ -1,28 +1,52 @@
-import Image from "next/image";
-import menu from "../public/icons/menu.svg";
-import search from "../public/icons/search.svg";
-import shoppingCart from "../public/icons/shopping-cart.svg";
+"use client";
+
+import { motion } from "framer-motion";
 
 const Header = () => {
+  const navs = ["SHOP", "COLLECTIVE", "DESIGNERS", "ABOUT US", "CONTACT"];
+
   return (
     <header className="flex h-20 w-full items-center justify-between border-b border-solid border-french-grey">
-      <span className="brand-font ml-10 mt-1 text-space-cadet">Cozy®</span>
-      <nav className="flex list-none gap-10">
-        <li className="label-small">SHOP</li>
-        <li className="label-small">COLLECTIVE</li>
-        <li className="label-small">DESIGNERS</li>
-        <li className="label-small">ABOUT US</li>
-        <li className="label-small">CONTACT</li>
+      <motion.span
+        whileHover={{ scale: 1.2 }}
+        className="brand-font ml-10 mt-1 cursor-pointer text-space-cadet"
+      >
+        Cozy®
+      </motion.span>
+      <nav className="flex list-none gap-8">
+        {navs.map((nav) => (
+          <li
+            key={nav}
+            className="label-small link relative cursor-pointer p-2"
+          >
+            {nav}
+          </li>
+        ))}
       </nav>
       <div className="flex h-full justify-between">
         <div className="flex items-center justify-center p-5">
-          <Image src={menu} alt="menu" />
+          <motion.img
+            whileHover={{ scale: 1.2 }}
+            src="/icons/menu.svg"
+            alt="menu"
+            className="cursor-pointer"
+          />
         </div>
         <div className="flex items-center justify-center p-5">
-          <Image src={search} alt="search" />
+          <motion.img
+            whileHover={{ scale: 1.2 }}
+            src="icons/search.svg"
+            alt="search"
+            className="cursor-pointer"
+          />
         </div>
         <div className="flex items-center justify-center border-l border-solid border-french-grey p-10">
-          <Image src={shoppingCart} alt="shopping-cart" />
+          <motion.img
+            whileHover={{ scale: 1.2 }}
+            src="/icons/shopping-cart.svg"
+            alt="shopping-cart"
+            className="cursor-pointer"
+          />
         </div>
       </div>
     </header>
