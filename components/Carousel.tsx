@@ -19,6 +19,8 @@ const Carousel = () => {
   ];
 
   const handleImageChange = (image: string) => {
+    const index = images.indexOf(image);
+    setCurrentIndex(index);
     setCurrentImage(image);
   };
 
