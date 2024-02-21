@@ -20,6 +20,7 @@ const Carousel = () => {
   const images = [meryl1, meryl2, meryl3, meryl4, meryl5];
 
   const handleImageChange = (image: StaticImageData) => {
+    if (image === currentImage) return;
     const index = images.indexOf(image);
     const mainImage = document.getElementById("main-image");
 
