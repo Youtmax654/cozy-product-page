@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Button from "../Button";
 
 type OrderSummaryProps = {
@@ -15,6 +16,11 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
   ApplyPromo,
   Checkout,
 }) => {
+  const [shippingFee, setShippingFee] = useState(0);
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setShippingFee(parseInt(e.target.value));
+  };
+
   return (
     <div className="w-[800px] bg-[#f8f4f4]">
       <div className="mx-16 mt-16 border-b border-solid border-french-grey pb-6">
@@ -30,6 +36,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
           name="shipping"
           id="shipping"
           className="rounded-lg border border-solid border-french-grey p-2 outline-none"
+          onChange={handleSelectChange}
           required
         >
           <option value="0">Select Shipping Option</option>
@@ -47,7 +54,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
 
       <div className="label-medium mx-16 my-8 flex justify-between border-t border-solid border-french-grey pt-6">
         <p>TOTAL COST</p>
-        <p>${total}</p>
+        <p>${total + shippingFee}</p>
       </div>
       <div className="flex justify-center">
         <Button value="Checkout" type="filled" enabled onClick={Checkout} />
