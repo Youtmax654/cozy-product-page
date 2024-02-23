@@ -7,9 +7,10 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Cart() {
-  const cart = localStorage.getItem("cart") as string;
+  const cart =
+    typeof window !== "undefined" ? localStorage.getItem("cart") : null;
 
-  const items = useMemo(() => [JSON.parse(cart)] as Storage[], [cart]);
+  const items = useMemo(() => [JSON.parse(cart || "")] as Storage[], [cart]);
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [total, setTotal] = useState(0);
 
