@@ -105,7 +105,9 @@ export default function MenylLoungeChair() {
       <div>
         <Carousel />
       </div>
-      <ToastContainer />
+      <div className="absolute">
+        <ToastContainer />
+      </div>
     </main>
   );
 }

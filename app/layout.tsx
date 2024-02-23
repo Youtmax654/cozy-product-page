@@ -21,7 +21,9 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
-        <ToastContainer />
+        <div className="absolute">
+          <ToastContainer />
+        </div>
       </body>
     </html>
   );

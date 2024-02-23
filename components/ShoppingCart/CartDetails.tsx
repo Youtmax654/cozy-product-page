@@ -37,7 +37,9 @@ const CartDetails: React.FC<CartDetailsProps> = ({
           <Product key={item.id} item={item} onclick={() => deleteItem(item)} />
         ))
       )}
-      <ToastContainer />
+      <div className="absolute">
+        <ToastContainer />
+      </div>
     </div>
   );
 };
