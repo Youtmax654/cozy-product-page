@@ -4,14 +4,14 @@ import { useState } from "react";
 
 import Image, { StaticImageData } from "next/image";
 
-import chevronLeft from "../public/icons/chevron-left.svg";
-import chevronRight from "../public/icons/chevron-right.svg";
+import chevronLeft from "../../public/icons/chevron-left.svg";
+import chevronRight from "../../public/icons/chevron-right.svg";
 
-import meryl1 from "../public/meryl-images/meryl-1.png";
-import meryl2 from "../public/meryl-images/meryl-2.png";
-import meryl3 from "../public/meryl-images/meryl-3.png";
-import meryl4 from "../public/meryl-images/meryl-4.png";
-import meryl5 from "../public/meryl-images/meryl-5.png";
+import meryl1 from "../../public/meryl-images/meryl-1.png";
+import meryl2 from "../../public/meryl-images/meryl-2.png";
+import meryl3 from "../../public/meryl-images/meryl-3.png";
+import meryl4 from "../../public/meryl-images/meryl-4.png";
+import meryl5 from "../../public/meryl-images/meryl-5.png";
 
 const Carousel = () => {
   const [currentImage, setCurrentImage] = useState(meryl1);

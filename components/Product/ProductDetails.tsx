@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Stars from "../public/icons/Stars.svg";
+import Stars from "../../public/icons/Stars.svg";
 
 type ProductDetailsProps = {
   title: string;

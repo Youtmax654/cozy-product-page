@@ -14,6 +14,7 @@ const config: Config = {
         "space-cadet": "#17183B",
         "cool-grey": "#A2A3B1",
         "french-grey": "#D1D1D8",
+        "imperial-red": "#E14B4B",
       },
     },
   },

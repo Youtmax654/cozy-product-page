@@ -1,8 +1,8 @@
 import Image from "next/image";
-import facebook from "../public/icons/facebook.svg";
-import instagram from "../public/icons/instagram.svg";
-import pinterest from "../public/icons/pinterest.svg";
-import twitter from "../public/icons/twitter.svg";
+import facebook from "../../public/icons/facebook.svg";
+import instagram from "../../public/icons/instagram.svg";
+import pinterest from "../../public/icons/pinterest.svg";
+import twitter from "../../public/icons/twitter.svg";
 
 const SocialMedia = () => {
   return (

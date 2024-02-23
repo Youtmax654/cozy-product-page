@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Image from "next/image";
-import minus from "../public/icons/minus.svg";
-import plus from "../public/icons/plus.svg";
+import minus from "../../public/icons/minus.svg";
+import plus from "../../public/icons/plus.svg";
 
-const Quantity = () => {
+type QuantityProps = {
+  handleQuantityChange: (value: number) => void;
+};
+
+const Quantity: React.FC<QuantityProps> = ({ handleQuantityChange }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrement = () => {
@@ -26,6 +30,10 @@ const Quantity = () => {
       setQuantity(parseInt(e.target.value));
     }
   };
+
+  useEffect(() => {
+    handleQuantityChange(quantity);
+  }, [handleQuantityChange, quantity]);
 
   return (
     <div className="relative flex h-[52px] w-40 select-none items-center justify-center rounded-[4px] border border-cool-grey">
